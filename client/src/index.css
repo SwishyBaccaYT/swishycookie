@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 217 33% 17%;
+    --foreground: 0 0% 95%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 158 64% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 35 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 35 92% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Russo One', sans-serif;
+  }
+}
+
+.points-popup {
+  position: absolute;
+  pointer-events: none;
+  animation: fade-up 1s ease-out forwards;
+}
+
+.upgrade-locked {
+  filter: brightness(0.5);
+}
+
+.upgrade-card {
+  transition: all 0.2s ease;
+}
+
+.upgrade-card:hover:not(.upgrade-locked) {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.level-indicator {
+  display: flex;
+  gap: 2px;
+}
+
+.level-indicator .level-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4B5563;
+}
+
+.level-indicator .level-dot.active {
+  background-color: #F59E0B;
+}
+
+.clickable-area {
+  cursor: pointer;
+  user-select: none;
+}
+
+.character-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .character-container {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.points-counter {
+  font-family: 'Russo One', sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.auto-click-indicator {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -25px;
+  left: 0;
+  font-size: 12px;
+  color: #A3E635;
+}
+
+@keyframes fade-up {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(-5%); }
+  50% { transform: translateY(0); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
